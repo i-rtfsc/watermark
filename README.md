@@ -1,2 +1,2 @@
 # watermark
-add watermark on android screen
+android screen logo

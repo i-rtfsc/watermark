@@ -1,0 +1,51 @@
+cc_binary {
+    name: "watermark",
+    system_ext_specific: true,
+
+    srcs: [
+        "src/**/*.cpp",
+        "src/**/*.c",
+    ],
+
+    init_rc: [
+        "watermark.rc"
+    ],
+
+    static_libs: [
+        "libskia",
+        "libarect",
+        "libsfntly",
+        "libwebp-decode",
+        "libwebp-encode",
+    ],
+
+    shared_libs: [
+        "libcutils",
+        "libutils",
+        "libui",
+        "libgui",
+        "libbinder",
+        "libnativewindow",
+        "liblog",
+        "libEGL",
+        "libGLESv2",
+        "libdng_sdk",
+        "libexpat",
+        "libft2",
+        "libheif",
+        "libjpeg",
+        "liblog",
+        "libpiex",
+        "libpng",
+        "libvulkan",
+        "libz",
+        "libcutils",
+        "libnativewindow",
+    ],
+
+    include_dirs: [
+        "external/skia/include/",
+        "external/skia/tools/",
+        "external/skia/include/private/",
+    ],
+}

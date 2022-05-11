@@ -1,0 +1,2 @@
+# add for watermark
+/(system_ext|system/system_ext)/bin/watermark        u:object_r:watermark_exec:s0

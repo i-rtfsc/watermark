@@ -1,0 +1,33 @@
+# watermar  service
+type watermark, domain;
+type watermark_exec, system_file_type, exec_type, file_type;
+
+typeattribute watermark coredomain;
+typeattribute watermark mlstrustedsubject;
+
+init_daemon_domain(watermark)
+
+binder_use(watermark)
+hwbinder_use(watermark)
+
+#============= surfaceflinger ==============
+binder_call(watermark, surfaceflinger)
+allow surfaceflinger watermark:binder call;
+
+allow watermark gpu_device:chr_file rw_file_perms;
+
+allow watermark surfaceflinger_service:service_manager find;
+
+# Allow access to ion memory allocation device
+allow watermark ion_device:chr_file rw_file_perms;
+
+# System file accesses.
+allow watermark system_file:dir r_dir_perms;
+
+allow watermark hal_graphics_mapper_hwservice:hwservice_manager find;
+allow watermark hal_graphics_allocator_default:fd use;
+
+#allow watermark oeminfo_device:chr_file { read write };
+get_prop(watermark, hwservicemanager_prop)
+
+allow watermark same_process_hal_file:file { read map getattr open execute };

@@ -1,0 +1,13 @@
+service watermark /system_ext/bin/watermark
+    class main
+    user graphics
+    group graphics
+
+on property:persist.sys.journeyOS.watermark=0
+    stop watermark
+
+on property:persist.sys.journeyOS.watermark=1
+    start watermark
+
+on property:persist.sys.journeyOS.watermark.alpha=*
+    restart watermark
